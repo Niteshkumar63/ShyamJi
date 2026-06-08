@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>ShyamJiBook Clone</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    :root{
+        --golden: #F7D162;
+    }
+    
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+    /*background: black;*/
+}
+
+body{
+    background-color:#000;
+    color:white;
+}
+
+.top-bar{
+    background:#000;
+    color:var(--golden);
+    padding:4px;
+}
+
+.top-bar marquee span{
+    padding-left: 10px;
+    font-style: italic;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:5px 20px;
+    background:#000;
+    /*background:#0d0d0d;*/
+}
+
+/*.logo{
+    color:#d4af37;
+    font-size:24px;
+    font-weight:bold;
+}*/
+.logo img{
+    height: 55px; 
+    width: 55px; 
+    object-fit: cover;
+}
+
+.nav-link a{
+    text-decoration: none;
+    color: white;
+    font-size: small;
+    font-weight: 600;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.nav-links a i{
+    font-size:25px;
+}
+
+.nav-links{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+}
+
+button{
+    /*background:#d4af37;*/
+    background: linear-gradient(
+        180deg,
+        #F8EE98 0%,
+        #F7D162 25%,
+        #EAB348 50%,
+        #D69A34 75%,
+        #9E6316 100%
+    );
+    border:none;
+    font-size: 15px;
+    font-weight: 600;
+    padding:8px 16px;
+    color: white;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+/*.nav-button-animate{
+    position: relative;
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.nav-button-animate::after, .nav-button-animate::before{
+content: '';
+inset: -2;
+position: absolute;
+height: 100%;
+width: 100%;
+background-image: conic-gradient(from var(--angle), transparent 10%, white);
+top: 50%;
+left: 50%;
+translate: -50% -50%;
+z-index: -1;
+padding: 8px;
+border-radius: 30px;
+animation: 3s spin linear infinite;
+}
+
+.nav-button-animate::before{
+filter: blur(1.5rem);
+opacity: 0.5;
+}
+
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}*/
+
+
+.nav-button-animate{
+    position:relative;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#d4af37;
+    color:#000;
+    z-index:1;
+}
+
+@property --angle{
+    syntax:"<angle>";
+    initial-value:0deg;
+    inherits:false;
+}
+
+.nav-button-animate::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:33px;
+
+    background:conic-gradient(
+        from var(--angle),
+        transparent 50%,
+        white
+    );
+
+    animation:spin 2s linear infinite;
+
+    /* Sirf border visible rahe */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+
+    padding:1.5px;
+
+    z-index:-1;
+}
+
+.nav-button-animate::after{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:36px;
+
+    background:conic-gradient(
+        from var(--angle),
+        transparent,
+        white,
+        #d4af37,
+        white,
+        transparent
+    );
+
+    filter:blur(12px);
+    opacity:.6;
+    z-index:-2;
+
+    animation:spin 3s linear infinite;
+}
+
+@keyframes spin{
+    from{
+        --angle:0deg;
+    }
+    to{
+        --angle:360deg;
+    }
+}
+
+
+
+
+
+.sports-menu{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:15px;
+    background:#1a1a1a;
+}
+
+.sports-menu span{
+    display: flex;
+    align-items: center;
+    font-size: small;
+}
+
+.sports-menu span img{
+    margin-right: 8px;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 40px;
+}
+
+.hero h1{
+    font-size:50px;
+    color:var(--golden);
+    font-weight: bold;
+}
+
+.hero p{
+    /*max-width:700px;*/
+    margin:20px auto;
+    font-size: medium;
+}
+
+.hero p span{
+    color: var(--golden);
+}
+
+.cta{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.stats{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.features,
+.steps{
+    padding:70px 20px;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background: black;
+    width:300px;
+    height: 250px;
+    border:1px solid #f1f1f1;
+    padding:25px;
+    border-radius:12px;
+    position: relative;
+    /*text-align:center;*/
+    /*color: white;*/
+}
+
+.card span i{
+    color: #d4af37;
+    font-size: 50px;
+}
+.card h1{
+    position: absolute;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(245, 245, 245, 1) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    color:transparent;
+    font-size: 50px;
+    font-weight: bolder;
+    top: -10%;
+    right: -3%;
+}
+
+.card h3{
+    color: white;
+    font-weight: bold;
+}
+
+.card p{
+    color: #ccc;
+}
+.HWT .row .col-md-4{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.HWT h2{
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.faq{
+    padding:70px 20px;
+}
+
+.faq h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.faq p{
+    text-align: center;
+}
+
+.faq-item{
+    margin-bottom:15px;
+}
+
+.faq-btn{
+    width:100%;
+    text-align:left;
+    padding: 18px 16px;
+    border-radius: 15px;
+    border: 0.5px solid #fbe7b4;
+    position: relative;
+    background-color:#151515 !important;
+    color:#ffffff !important;
+    /*border:0.5px solid #d4af37 !important;*/
+    display: flex;
+    align-items: center;
+}
+
+.faq-btn i{
+    position: absolute;
+    right: 2%;
+}
+
+.faq-span-1{
+    font-size: 28px;
+}
+
+.faq-span-2{
+    color:#fff;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 25px;
+}
+
+.faq-content{
+    display:none;
+    padding:15px;
+    border:1px solid #333;
+}
+
+
+
+.faq-btn{
+    background:#151515;
+    color:#fff;
+    border:1px solid rgba(212,175,55,.4);
+    transition:0.3s;
+}
+
+.faq-btn:hover{
+    background:#d4af37;
+    color:#000;
+}
+
+
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #333;
+}
+
+.footer{
+    margin-top: 50px;
+}
+.footer ul{
+    list-style: none;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:28px;
+}
+
+.restriction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restriction div{
+    border: 2px solid indianred;
+    padding: 8px 5px;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.restriction p{
+    margin: unset;
+    padding-left: 10px;
+    font-weight: 600;
+    color: indianred;
+}
+
+/*----------------- slider start--------------------------*/
+
+.slider-wrapper{
+    max-width:1200px;
+    max-height: 380px;
+    margin:auto;
+    overflow:hidden;
+}
+
+.slider-track{
+    display:flex;
+    gap:20px;
+    transition:transform .6s ease;
+}
+
+.feature-card{
+    /*min-width:calc((100% - 40px)/3);
+    /*min-width:280px*/
+    width:300px;
+    height: 350px;
+    background:#151515;
+    border:1px solid rgba(212,175,55,.2);
+    border-radius:16px;
+    padding:30px;
+    color:#fff;
+    flex-shrink:0;
+   /* display: flex;
+    justify-content: center;
+    align-items: center;*/
+}
+
+.feature-card i{
+    font-size: 50px;
+}
+
+.feature-card span{
+    background: #1e1e1e;
+    border-radius: 50%;
+    width: 30%;
+    display: inline-block;
+    color: #d4af37;
+}
+
+.feature-card h3{
+    color:#d4af37;
+    margin-bottom:15px;
+    font-weight: bold;
+}
+
+.feature-card p{
+    color:#ccc;
+    line-height:1.6;
+}
+
+.slider-dots{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:10px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#555;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.dot.active{
+    background:#d4af37;
+    transform:scale(1.3);
+}
+
+/* Tablet */
+
+@media(max-width:992px){
+
+    .feature-card{
+        min-width:calc((100% - 20px)/2);
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .feature-card{
+        min-width:100%;
+    }
+
+}
+/*----------------- slider end ---------------------------*/
+
+
+/*----------------- mobile view start ---------------------------*/
+/* ==========================
+   MOBILE RESPONSIVE
+========================== */
+
+@media only screen and (max-width:768px){
+
+    /* Navbar */
+
+    .navbar{
+        /*flex-direction:column;*/
+        gap:15px;
+        padding:5px;
+    }
+
+    .logo img{
+        height: 50px; 
+        width: 50px; 
+    }
+
+    .nav-link{
+        display:none;
+    }
+
+    .nav-links{
+        /*width:100%;*/
+        justify-content:center;
+    }
+
+    .nav-links a i{
+        font-size:20px;
+    }
+
+    .nav-button-animate{
+        padding:8px 16px;
+        font-size:12px;
+    }
+
+    /* Hero */
+
+    .hero{
+        padding:40px 15px;
+    }
+
+    .hero h1{
+        font-size:25px;
+        line-height:1.3;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    .hero p{
+        font-size:16px;
+        line-height:1.7;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Stats */
+
+    .stats{
+        flex-wrap:wrap;
+        gap:10px;
+        font-size:13px;
+    }
+
+    /* Sports Menu */
+
+    .sports-menu{
+        overflow:auto;
+        justify-content:flex-start;
+        gap:18px;
+        padding:12px;
+        white-space:nowrap;
+        scrollbar-width:none;
+    }
+
+    .sports-menu::-webkit-scrollbar{
+        display:none;
+    }
+
+    .sports-menu span{
+        flex-shrink:0;
+        font-size:12px;
+    }
+
+    /* Feature Slider */
+
+    .slider-wrapper{
+        max-height:350;
+    }
+
+    .feature-card{
+        min-width:100%;
+        width:100%;
+        height:280px;
+        padding:25px;
+    }
+
+    .feature-card h3{
+        font-size:20px;
+    }
+
+    .feature-card p{
+        font-size:14px;
+    }
+
+    /* How To Play */
+
+    .card{
+        width:100%;
+        height:auto;
+        margin-bottom:20px;
+    }
+
+    .card h2{
+        font-size:28px;
+        top:-8%;
+        right:5%;
+    }
+    /* How To Play */
+    .HWT h2{
+        font-size: 35px;
+    }    
+
+    /* FAQ */
+
+    .faq{
+        padding:40px 15px;
+    }
+
+    .faq h2{
+        font-size:30px !important;
+    }
+
+    .faq-btn{
+        padding:15px 12px;
+    }
+
+    .faq-span-1{
+        font-size:20px;
+    }
+
+    .faq-span-2{
+        font-size:13px;
+    }
+
+    /* Restriction */
+
+    .restriction{
+        flex-direction:column;
+        text-align:center;
+        gap:10px;
+        padding:0 15px;
+    }
+
+    /* Footer */
+
+    .footer{
+        text-align: left;
+    }
+
+    .footer ul{
+        padding-left:0;
+        margin-bottom:20px;
+    }
+
+    footer{
+        padding:20px 10px;
+        font-size:13px;
+    }
+
+    /* Floating WhatsApp */
+
+    .whatsapp{
+        width:55px;
+        height:55px;
+        font-size:24px;
+    }
+
+}
+/*----------------- mobile view end ---------------------------*/
+</style>
+<body>
+
+    <div class="top-bar">
+        <marquee>
+            <span><i class="bi bi-arrow-right-circle"></i> BONUS ON FIRST DEPOSIT</span>
+            <span><i class="bi bi-arrow-right-circle"></i> LIVE CASINO</span>
+            <span><i class="bi bi-arrow-right-circle"></i> FASTEST WITHDRAWAL</span>
+            <span><i class="bi bi-arrow-right-circle"></i> INDIA'S TRUSTED BOOK</span>
+        </marquee>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo"><img src="./IMG_1534.png"></div>
+
+        <div class="nav-link">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Partner</a>
+            <a href="#">Online Batting Site</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="nav-links">
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <button class="nav-button-animate">GET ID NOW</button>
+        </div>
+    </nav>
+
+    <div class="sports-menu">
+        <span><img src="inplay.webp" style="height:20px; width: auto;"> INPLAY</span>
+        <span><img src="cricket.webp" style="height:20px; width: auto;"> CRICKET</span>
+        <span><img src="soccer.webp" style="height:20px; width: auto;"> SOCCER</span>
+        <span><img src="tennis.webp" style="height:20px; width: auto;"> TENNIS</span>
+        <span><img src="premium.webp" style="height:20px; width: auto;"> SPORTSBOOK</span>
+        <span><img src="live-card.webp" style="height:20px; width: auto;"> LIVE CARDS</span>
+        <span><img src="slot-games.webp" style="height:20px; width: auto;"> SLOTS</span>
+    </div>
+
+    <section class="hero container">
+        <h1>Get Your Online Cricket ID <br>With <span style="color:#fff;">SHYAMJI BOOK</span></h1>
+
+        <p>
+            Looking for a trusted and professional cricket ID provider? ShyamJi Book is your premier destination for secure online cricket IDs. We offer a seamless and reliable platform to obtain your <span>online cricket ID</span> with complete peace of mind. Experience premium features, competitive odds, and a user-friendly interface designed to enhance your cricket experience.<br>
+
+            Discover why ShyamJi Book stands out as the leading platform for those seeking a <span>premium online cricket ID</span>. Join thousands of satisfied users who trust our professional services.
+        </p>
+
+        <button class="cta"><i class="bi bi-whatsapp"></i> WhatsApp Us Now</button>
+
+        <div class="stats">
+            <span>10,000+ Users</span>
+            <span>Secure Payments</span>
+            <span>24/7 Support</span>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-md-3" style="display:flex;align-items: flex-end;padding-bottom: 40px;text-align: center;">
+                <p>Experience the most trusted and reliable cricket betting platform with ShyamJi Book. We offer the best odds, instant withdrawals, and 24/7 customer support.</p>
+            </div>
+            <div class="col-md-9">
+                <div class="slider-wrapper">
+
+                    <div class="slider-track">
+
+                        <div class="feature-card">
+                            <div style="display: flex; justify-content: center;">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3>3M+ Active Users</h3>
+                            <p>Join our growing community of over 3 million satisfied users. Experience the most trusted cricket batting platform with compititive odds and extensive market coverage.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div style="display: flex; justify-content: center;">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3>Fast Withdrawal</h3>
+                            <p>Get instant access to your winnings with our lightning-fast withdrawal system. We process all payment requests quickly and securely, insuring you get your money when you need it.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div style="display: flex; justify-content: center;">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3>Best Platform</h3>
+                            <p>Experience the ultimate cricket batting platform with user-friendly interface, live batting and comprehensive coverage of all cricket matches worldwide.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div style="display: flex; justify-content: center;">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3>24*7 Customer Support</h3>
+                            <p>Our Dedicated support team is available round the clock to assist you. Get instant resolution for all your queries and enjoy uninterrupted betting experience.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div style="display: flex; justify-content: center;">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3>Real Time Updates</h3>
+                            <p>Stay ahead with live scores, real time odds updates, and instant bet settlement. Never miss an opportunity with our advanced betting platform.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <div style="display: flex; justify-content: center;">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3>100% Trusted Platform</h3>
+                            <p>Shyam Ji Book offers secure and reliable online cricket ID with attractive offers. Our platform ensures complete safety of your transaction and personal information.\</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="slider-dots"></div>
+            </div>
+        </div>
+        <!-- <div class="card">
+            <i class="bi bi-people"></i>
+            <h3>3M+ Active Users</h3>
+            <p>Join our growing community of over 3 million satisfied users. Experience the most trusted cricket batting platform with compititive odds and extensive market coverage.</p>
+        </div>
+
+        <div class="card">
+            <i class="bi bi-lightning-charge"></i>
+            <h3>Fast Withdrawal</h3>
+            <p>Get instant access to your winnings with our lightning-fast withdrawal system. We process all payment requests quickly and securely, insuring you get your money when you need it.</p>
+        </div> -->
+
+        <!-- <div class="card">
+            <i class="bi bi-trophy"></i>
+            <h3>Best Platform</h3>
+            <p>Experience the ultimate cricket batting platform with user-friendly interface, live batting and comprehensive coverage of all cricket matches worldwide.</p>
+        </div>
+
+        <div class="card">
+            <i class="bi bi-headphones"></i>
+            <h3>24*7 Customer Support</h3>
+            <p>Our Dedicated support team is available round the clock to assist you. Get instant resolution for all your queries and enjoy uninterrupted betting experience.</p>
+        </div>
+
+        <div class="card">
+            <i class="bi bi-clock"></i>
+            <h3>Real Time Updates</h3>
+            <p>Stay ahead with live scores, real time odds updates, and instant bet settlement. Never miss an opportunity with our advanced betting platform.</p>
+        </div>
+
+        <div class="card">
+            <i class="bi bi-shield"></i>
+            <h3>100% Trusted Platform</h3>
+            <p>Shyam Ji Book offers secure and reliable online cricket ID with attractive offers. Our platform ensures complete safety of your transaction and personal information.\</p>
+        </div> -->
+    </section>
+
+    <!-- <section class="partners">
+        <h2>Our Partners</h2>
+
+        <div class="partner-grid">
+
+            <div class="partner-card">
+                <h3>Sky Exchange</h3>
+                <ul>
+                    <li>Best Platform</li>
+                    <li>Competitive Odds</li>
+                    <li>Fast Payment</li>
+                </ul>
+                <button>Get ID</button>
+            </div>
+
+            <div class="partner-card">
+                <h3>Go Exchange</h3>
+                <ul>
+                    <li>Best Platform</li>
+                    <li>Competitive Odds</li>
+                    <li>Fast Payment</li>
+                </ul>
+                <button>Get ID</button>
+            </div>
+
+            <div class="partner-card">
+                <h3>My99</h3>
+                <ul>
+                    <li>Best Platform</li>
+                    <li>Competitive Odds</li>
+                    <li>Fast Payment</li>
+                </ul>
+                <button>Get ID</button>
+            </div>
+
+            <div class="partner-card">
+                <h3>Tiger Exchange</h3>
+                <ul>
+                    <li>Best Platform</li>
+                    <li>Competitive Odds</li>
+                    <li>Fast Payment</li>
+                </ul>
+                <button>Get ID</button>
+            </div>
+
+        </div>
+    </section> -->
+
+    <!-- <section class="steps"> -->
+    <section class="HWT container" style="text-align: center;margin-top: 40px;">
+        <h2>How To Play <br><span style="color:#d4af37;">With Us<span></h2>
+
+        <p style="padding-bottom:25px; font-weight: bold;">Follow these simple steps to join our gaming community and start winning</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <span><i class="bi bi-whatsapp"></i></span>
+                    <h1>1</h1>
+                    <h3>WhatsApp Us</h3>
+                    <p>Connect with us instantly through Whatsapp to start your gaming journey.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <span><i class="bi bi-controller"></i></span>
+                    <h1>2</h1>
+                    <h3>Get ID & Play</h3>
+                    <p>Receive your unique gaming ID and excess our exclusive gaming platform.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <span><i class="bi bi-trophy-fill"></i></span>
+                    <h1>3</h1>
+                    <h3>Win Prizes</h3>
+                    <p>Complete and win exciting rewards in our daily gaming tournaments.</p>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="step-grid">
+            <div class="card">
+                <i class="bi bi-whatsapp"></i>
+                <h3>1. WhatsApp Us</h3>
+            </div>
+
+            <div class="card">
+                <i class="bi bi-controller"></i>
+                <h3>2. Get ID & Play</h3>
+            </div>
+
+            <div class="card">
+                <i class="bi bi-trophy-fill"></i>
+                <h3>3. Win Prizes</h3>
+            </div>
+        </div> -->
+    </section>
+
+    <section class="faq">
+        <h2 style="font-size: 45px;font-weight: bold;color:#d4af37;">Frequently Asked Questions</h2>
+        <p style="padding-bottom: 20px;">Get answers to common questions about ShyamJi Book</p>
+
+        <div class="faq-item">
+            <button class="faq-btn">
+                <span class="faq-span-1">01</span>
+                <span class="faq-span-2">How does one get an Online Cricket ID on ShyamJi Book?</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="faq-content">
+                One has to visit the website, fill out the registration form the get an ID after depositing some funds. 
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-btn">
+                <span class="faq-span-1">02</span>
+                <span class="faq-span-2">Is ShyamJi Book legally safe to bet through?</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="faq-content">
+                ShyamJi Book operates under strict regulatory compliance and security protocols to ensure safe and secure betting experiences for all users.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-btn">
+                <span class="faq-span-1">03</span>
+                <span class="faq-span-2">Which sports betting is possible on ShyamJi Book?</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="faq-content">
+                ShyamJi Book offers a wide range of sports betting options including cricket, football, tennis, basketball, and many other popular sports with competitive odds.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-btn">
+                <span class="faq-span-1">04</span>
+                <span class="faq-span-2">Are you there free bets offered for first time players?</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="faq-content">
+                Yes, ShyamJi Book offers welcome bonuses and free bets for new players. Terms and conditions apply to these promotional offers.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-btn">
+                <span class="faq-span-1">05</span>
+                <span class="faq-span-2">Does ShyamJi Book allow placing of online live bets?</span>
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="faq-content">
+                Yes, ShyamJi Book provides real-time live betting features across various sports events with instant updates and quick bet placement options.
+            </div>
+        </div>
+
+    </section>
+
+    <section class="restriction">
+        <div>18+</div><p>Gambling can be addictive. Please play responsibly and at your own risk.</p>
+    </section>
+
+    <section class="footer container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul>
+                    <li>Contact Us</li>
+                    <li>About Us</li>
+                    <li>Term & conditions</li>
+                    <li>Privacy Policy</li>
+                    <li>Blog</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    <li style="line-height: 3;"><i class="bi bi-whatsapp" style="font-size:15px; border: 1px solid white; border-radius: 8px; padding: 8px;"></i> +91-12345 6789</li>
+                    <li style="line-height: 3;"><i class="bi bi-telephone" style="font-size:15px; border: 1px solid white; border-radius: 8px; padding: 8px;"></i> WhatsApp</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 ShyamJi Book. All Rights Reserved.</p>
+    </footer>
+
+    <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
